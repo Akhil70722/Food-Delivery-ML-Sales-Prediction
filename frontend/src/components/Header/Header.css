@@ -1,0 +1,96 @@
+/* Main Header Styles */
+.header {
+    height: 34vw;
+    margin: 30px auto;
+    background: url('/header_img.png') no-repeat center center; /* Center the background */
+    background-size: cover; /* Ensure it covers the entire area */
+    position: relative;
+    overflow: hidden; /* Prevent overflow issues */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+/* Header Content Styles */
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align to the start for better text placement */
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 10%;
+    left: 6vw;
+    animation: fadeIn 1.5s ease-in-out; /* Shortened duration with smooth easing */
+    z-index: 1; /* Ensure it’s above the background image */
+}
+
+/* Header Title (h2) Styling */
+.header-contents h2 {
+    font-weight: 500;
+    color: white;
+    font-size: max(4.5vw, 22px);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Add subtle shadow for better readability */
+}
+
+/* Header Description (p) Styling */
+.header-contents p {
+    color: white;
+    font-size: 1vw;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow to the paragraph */
+}
+
+/* Button Styling */
+.header-contents button {
+    border: none;
+    color: #747474;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background: white;
+    font-size: max(1vw, 13px);
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.2s; /* Smooth transition on hover */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Button Hover Effect */
+.header-contents button:hover {
+    background: #FF4C24; /* Change to primary color */
+    color: white; /* Change text color */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Animation Keyframes for Fade-In Effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Start from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+/* Media Queries */
+
+/* Adjust for medium-sized screens */
+@media (max-width: 1050px) {
+    .header {
+        height: 38vw; /* Adjust height slightly for smaller screens */
+    }
+    .header-contents {
+        max-width: 45%; /* Reduce content width */
+    }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 750px) {
+    .header-contents {
+        max-width: 55%; /* Further adjust width */
+    }
+    .header-contents p {
+        display: none; /* Hide paragraph on very small screens */
+    }
+    .header-contents button {
+        padding: 2vw 4vw; /* Adjust button padding */
+    }
+}

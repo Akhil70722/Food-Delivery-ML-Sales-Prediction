@@ -1,0 +1,109 @@
+.footer {
+    color: #D9D9D9;
+    background-color: #1A1A1A; /* Slightly darker background for a premium feel */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 8vw;
+    padding-top: 60px;
+    border-top: 5px solid #E91E63; /* Adds a vibrant accent */
+}
+
+.footer-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Add extra space for the Legal section */
+    gap: 60px;
+}
+
+.footer-content-left, 
+.footer-content-center, 
+.footer-content-right, 
+.footer-content-legal {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.footer-content-left ul li,
+.footer-content-center ul li,
+.footer-content-right ul li,
+.footer-content-legal ul li {
+    margin-bottom: 8px;
+    list-style: none;
+    font-size: 0.95rem; /* Slightly smaller for better alignment */
+}
+
+.footer-content-left h2, 
+.footer-content-center h2, 
+.footer-content-right h2, 
+.footer-content-legal h2 {
+    color: #FFFFFF;
+    font-size: 1.2rem; /* Distinct heading size */
+    border-bottom: 2px solid #E91E63; /* Underline effect for headings */
+    padding-bottom: 5px;
+}
+
+.footer-social-icons img {
+    width: 35px;
+    filter: grayscale(100%); /* Makes icons grayscale for a modern look */
+    transition: filter 0.3s ease;
+}
+
+.footer-social-icons img:hover {
+    filter: grayscale(0%); /* Color restores on hover */
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer li {
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer li:hover {
+    color: #E91E63; /* Accent color on hover */
+    transform: translateX(5px); /* Subtle animation */
+}
+
+.footer hr {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0px;
+    background: #444; /* Better contrast for separator */
+    border: none;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}
+
+@media (max-width: 750px) {
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-content-left, 
+    .footer-content-center, 
+    .footer-content-right, 
+    .footer-content-legal {
+        align-items: center; /* Align content to center for smaller screens */
+    }
+
+    .footer-content-left p {
+        text-align: center; /* Center-align text for better readability */
+    }
+
+    .footer h2 {
+        text-align: center;
+    }
+}

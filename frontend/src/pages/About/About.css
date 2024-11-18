@@ -1,0 +1,17 @@
+.about-container {
+    padding: 20px;
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container */
+    font-family: Arial, sans-serif; /* Set the font */
+    line-height: 1.6; /* Improve readability */
+  }
+  
+  .about-container h1 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+  
+  .about-container p {
+    margin-bottom: 15px; /* Add space between paragraphs */
+  }
+  

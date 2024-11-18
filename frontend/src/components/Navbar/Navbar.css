@@ -1,0 +1,225 @@
+.navbar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #49557E; /* Navbar background color */
+    color: #fff; /* Navbar text color */
+}
+
+.navbar .logo {
+    width: 120px; /* Reduced logo size */
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-size: 18px;
+    margin: 0; /* Ensure no extra margin around the menu */
+    padding: 0; /* Ensure no extra padding around the menu */
+}
+
+.navbar-menu a {
+    color: #fff; /* White color for menu links */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center; /* Center-align the text */
+}
+
+.navbar-menu .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #FF4C24; /* Active link underline color */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Styles for the search input */
+.navbar-search-input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    width: 250px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus effect for the search input */
+.navbar-search-input:focus {
+    border-color: #FF4C24;
+    box-shadow: 0 0 5px rgba(255, 76, 36, 0.5);
+    outline: none;
+}
+
+/* Hover effect for the search input */
+.navbar-search-input:hover {
+    border-color: #FF4C24;
+}
+
+/* Styles for the cart icon */
+.navbar-search-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Notification dot styles */
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: #FF4C24;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+/* Cart icon styles */
+.navbar-search-icon img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.navbar-search-icon:hover img {
+    transform: scale(1.1);
+}
+
+/* Profile icon styles */
+.navbar-profile img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.navbar-profile:hover img {
+    transform: scale(1.1);
+}
+
+.navbar-right button {
+    background: transparent;
+    font-size: 16px;
+    color: #FF4C24; /* Button text color */
+    border: 1px solid #FF4C24; /* Button border color */
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s; /* Added transition for hover */
+}
+
+.navbar-right button:hover {
+    background: rgba(255, 76, 36, 0.1); /* Light hover background color */
+    color: #fff; /* Change text color on hover */
+}
+
+.navbar-profile {
+    position: relative;
+}
+
+.navbar-profile-dropdown {
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+
+.navbar-profile-dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navbar-profile-dropdown img {
+    width: 20px;
+}
+
+.navbar-profile-dropdown li:hover {
+    color: #FF4C24; /* Change color on hover */
+}
+
+.navbar-profile:hover .navbar-profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef; /* Dropdown background color */
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.navbar-profile hr {
+    background-color: gray;
+    height: 1px;
+    border: none;
+}
+
+/* Styles for the theme toggle button */
+.theme-toggle-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Button background color */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+@media (max-width: 1050px) {
+    .navbar .logo {
+        width: 110px; /* Further reduce logo size */
+    }
+
+    .navbar-menu {
+        gap: 20px;
+        font-size: 17px;
+    }
+
+    .navbar-right {
+        gap: 30px;
+    }
+
+    .navbar-right img {
+        width: 22px;
+    }
+
+    .navbar-right button {
+        padding: 8px 25px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 100px; /* Further reduce logo size */
+    }
+
+    .navbar-menu {
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .navbar-right {
+        gap: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar-right button {
+        font-size: 15px;
+        padding: 7px 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    .navbar-menu {
+        display: none; /* Hide menu items on smaller screens */
+    }
+}

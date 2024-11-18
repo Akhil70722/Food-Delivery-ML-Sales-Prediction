@@ -1,0 +1,35 @@
+.delivery-container {
+    padding: 20px;
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container */
+    font-family: Arial, sans-serif; /* Set the font */
+    line-height: 1.6; /* Improve readability */
+  }
+  
+  .delivery-container h1 {
+    text-align: center; /* Center the main heading */
+    margin-bottom: 20px; /* Add space below the main heading */
+  }
+  
+  .delivery-info {
+    display: flex;
+    flex-direction: column; /* Arrange sections vertically */
+  }
+  
+  .delivery-section {
+    background-color: #f9f9f9; /* Light background for each section */
+    padding: 15px; /* Padding around each section */
+    margin: 10px 0; /* Space between sections */
+    border-radius: 5px; /* Slight rounding of corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .delivery-section h2 {
+    margin-top: 0; /* Remove top margin for better alignment */
+    color: #333; /* Darker color for headings */
+  }
+  
+  .delivery-section p {
+    margin: 0; /* Remove margin for paragraphs */
+  }
+  

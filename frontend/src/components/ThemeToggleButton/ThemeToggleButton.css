@@ -1,0 +1,16 @@
+.theme-toggle-button {
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 24px; /* Font size for the icons */
+    transition: transform 0.3s; /* Smooth transform transition */
+    outline: none; /* Remove outline */
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+.theme-toggle-button:focus {
+    outline: none; /* Remove outline on focus */
+}

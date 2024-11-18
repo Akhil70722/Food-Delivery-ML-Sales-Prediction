@@ -1,0 +1,40 @@
+/* src/pages/PrivacyPolicy/PrivacyPolicy.css */
+
+.privacy-policy-container {
+    max-width: 800px; /* Limit the width for better readability */
+    margin: 20px auto; /* Center the container */
+    padding: 20px; /* Add padding for inner spacing */
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  h1 {
+    font-size: 2em; /* Increase size for the main heading */
+    color: #333; /* Dark color for better contrast */
+    margin-bottom: 20px; /* Space below the heading */
+  }
+  
+  h2 {
+    font-size: 1.5em; /* Size for subheadings */
+    color: #555; /* Slightly lighter than the main heading */
+    margin-top: 20px; /* Space above subheadings */
+    margin-bottom: 10px; /* Space below subheadings */
+  }
+  
+  p {
+    font-size: 1em; /* Default font size */
+    line-height: 1.6; /* Improved line spacing for readability */
+    color: #666; /* Soft color for regular text */
+    margin-bottom: 15px; /* Space below paragraphs */
+  }
+  
+  ul {
+    list-style-type: disc; /* Bullet points for lists */
+    margin-left: 20px; /* Indentation for list */
+  }
+  
+  strong {
+    color: #333; /* Dark color for emphasized text */
+  }
+  
