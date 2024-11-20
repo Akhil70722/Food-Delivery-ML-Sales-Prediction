@@ -23,26 +23,39 @@ const LoginPopup = ({ setShowLogin }) => {
     }
 
     const onLogin = async (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
+    
         let new_url = url;
         if (currState === "Login") {
             new_url += "/api/user/login";
+        } else {
+            new_url += "/api/user/register";
         }
-        else {
-            new_url += "/api/user/register"
+    
+        try {
+            const response = await axios.post(new_url, data);
+    
+            if (response.data.success) {
+                console.log(response)
+                // Storing token and user data in localStorage
+                toast.success(currState === "Sign Up" ? "Account Created Successfully!" : "Login Successful!");
+                setToken(response.data.token);
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user", JSON.stringify(data)); // Store the user data
+                
+                // Optionally, store user data in your context as well (if applicable)
+                loadCartData({ token: response.data.token });
+    
+                setShowLogin(false); // Close login popup
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.error("Error during login/signup:", error);
+            toast.error("An error occurred. Please try again later.");
         }
-        const response = await axios.post(new_url, data);
-        if (response.data.success) {
-            setToken(response.data.token)
-            localStorage.setItem("token", response.data.token)
-            loadCartData({token:response.data.token})
-            setShowLogin(false)
-        }
-        else {
-            toast.error(response.data.message)
-        }
-    }
+    };
+    
 
     return (
         <div className='login-popup'>

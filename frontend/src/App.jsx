@@ -23,6 +23,7 @@ import CookiePolicy from './pages/CookiePolicy/CookiePolicy';
 import TrackOrder from './pages/TrackOrder/TrackOrder';
 import ChatBot from './pages/HelpSupport/ChatBot'; // Import ChatBot component
 import './App.css';
+import HelpAndSupport from './pages/HelpAndSupport';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -66,28 +67,38 @@ const App = () => {
   return (
     <ThemeProvider>
       <ToastContainer />
-      {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
-      <div className="app">
-        <Navbar setShowLogin={setShowLogin} items={foodList} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/order" element={<PlaceOrder />} />
-          <Route path="/myorders" element={<MyOrders />} />
-          <Route path="/myorders/delivery-details/:id" element={<DeliveryDetails />} />
-          <Route path="/track-order/:orderId" element={<TrackOrder />} />
-          <Route path="/verify" element={<Verify />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/delivery" element={<Delivery />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/search" element={<SearchResults items={foodList} />} />
-          <Route path="/promo-code" element={<PromoCode />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/help-support" element={<ChatBot />} /> {/* ChatBot route */}
-        </Routes>
-      </div>
-      <Footer />
+      {/* <div className='relative'> */}
+
+        
+
+        {showLogin && (
+          <div className="fixed z-50 w-[100vw]">
+            <LoginPopup setShowLogin={setShowLogin} />
+          </div>
+        )}
+        <div className="app relative z-20">
+          <Navbar setShowLogin={setShowLogin} items={foodList} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/order" element={<PlaceOrder />} />
+            <Route path="/myorders" element={<MyOrders />} />
+            <Route path="/myorders/delivery-details/:id" element={<DeliveryDetails />} />
+            <Route path="/track-order/:orderId" element={<TrackOrder />} />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/delivery" element={<Delivery />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/search" element={<SearchResults items={foodList} />} />
+            <Route path="/promo-code" element={<PromoCode />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/help" element={<HelpAndSupport />} /> {/* ChatBot route */}
+          </Routes>
+        </div>
+        <Footer />
+      {/* </div> */}
+      {/* {showLogin && <LoginPopup setShowLogin={setShowLogin} />} */}
     </ThemeProvider>
   );
 };

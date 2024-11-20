@@ -15,18 +15,26 @@ const Sidebar = () => {
           <img src={assets.order_icon} alt="List" />
           <p>List Items</p>
         </NavLink>
-        <NavLink to='/orders' className="sidebar-option">
+        <NavLink to='/adddeliverypartner' className="sidebar-option">
+          <img src={assets.order_icon} alt="deli" />
+          <p>Add Delivery Partner</p>
+        </NavLink>
+        <NavLink to='/userhelpandsupport' className="sidebar-option">
+          <img src={assets.order_icon} alt="deli" />
+          <p>User Help and Support</p>
+        </NavLink>
+        {/* <NavLink to='/orders' className="sidebar-option">
           <img src={assets.order_icon} alt="Orders" />
           <p>Orders</p>
-        </NavLink>
+        </NavLink> */}
         <NavLink to='/customer-profiles' className="sidebar-option">
           <img src={assets.customer_icon} alt="Customer Profiles" />
           <p>Customer Profiles</p>
         </NavLink>
-        <NavLink to='/restock-alerts' className="sidebar-option">
+        {/* <NavLink to='/restock-alerts' className="sidebar-option">
           <img src={assets.alert_icon} alt="Restock Alerts" />
           <p>Restock Alerts</p>
-        </NavLink>
+        </NavLink> */}
         <NavLink to='/supplier-management' className="sidebar-option">
           <img src={assets.supplier_icon} alt="Supplier Management" />
           <p>Supplier Management</p>
@@ -38,6 +46,10 @@ const Sidebar = () => {
         <NavLink to='/feedback-response' className="sidebar-option">
           <img src={assets.feedback_icon} alt="Feedback" />
           <p>Feedback Response</p>
+        </NavLink>
+        <NavLink to='/productanalysis' className="sidebar-option">
+          <img src={assets.revenue_icon} alt="" />
+          <p>Product Analysis</p>
         </NavLink>
         <NavLink to='/revenue-tracking' className="sidebar-option">
           <img src={assets.revenue_icon} alt="Revenue Tracking" />

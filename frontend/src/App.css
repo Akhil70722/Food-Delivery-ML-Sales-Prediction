@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* src/App.css */
 body {
   transition: background-color 0.3s, color 0.3s; /* Smooth transition */
