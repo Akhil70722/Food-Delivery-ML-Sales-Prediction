@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css';
@@ -9,15 +9,16 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmlvLXN1cHJlbWUiLCJhIjoiY2xnOTdtaXU5MDB3MjNjc
 const Tracking = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const [deliveryLocation, setDeliveryLocation] = useState([84.9551, 24.7526]); // Example: Delivery location (change as needed)
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    if (map.current) return; // Initialize the map only once
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11', // Map style
-      center: [72.8777, 19.076], // Example: Mumbai, India
-      zoom: 10,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [84.9912, 24.6935], // Fixed: IIM Bodh Gaya Canteen coordinates
+      zoom: 14,
     });
 
     map.current.on('load', () => {
@@ -27,7 +28,7 @@ const Tracking = () => {
     const directions = new MapboxDirections({
       accessToken: mapboxgl.accessToken,
       unit: 'metric',
-      profile: 'mapbox/driving', // Set default profile to driving
+      profile: 'mapbox/driving',
       controls: {
         inputs: true,
         instructions: false,
@@ -37,20 +38,21 @@ const Tracking = () => {
     // Add the directions control to the map
     map.current.addControl(directions, 'top-left');
 
-    // Set source and destination locations
-    directions.setOrigin([72.8777, 19.076]); // Example: Starting point
-    directions.setDestination([72.8258, 18.9647]); // Example: Destination
+    // Set fixed origin (IIM Bodh Gaya Canteen) and dynamic destination (Delivery Partner's Location)
+    directions.setOrigin([84.9912, 24.6935]); // Fixed: IIM Bodh Gaya Canteen coordinates
+    directions.setDestination(deliveryLocation); // Dynamic: Delivery Partner's current location
 
-    // Set the driving profile mode explicitly
     directions.on('route', () => {
-      // Optionally, you can handle routing events here
+      // Handle routing event (e.g., logging or any specific actions on route completion)
     });
 
-  }, []);
+  }, [deliveryLocation]); // Re-run useEffect if deliveryLocation changes
 
   return (
-    <div className='w-'>
+    <div className='tracking-container'>
       <div ref={mapContainer} style={{ width: '70vw', height: '70vh' }} />
+      {/* Add functionality to update deliveryLocation dynamically */}
+      <button onClick={() => setDeliveryLocation([84.9915, 24.6930])}>Update Delivery Location</button> {/* Example button */}
     </div>
   );
 };
