@@ -12,6 +12,8 @@ router.post('/message', helpAndSupportController.addMessage);
 // Get all tickets by user (replace with appropriate user logic)
 router.get('/user/:userId', helpAndSupportController.getTicketsByUser);
 
+router.get('/user', helpAndSupportController.getAllTickets);
+
 // Get a specific ticket by its ID
 router.get('/:ticketId', helpAndSupportController.getTicketById);
 

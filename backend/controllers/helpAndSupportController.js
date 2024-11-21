@@ -104,6 +104,32 @@ export const getTicketsByUser = async (req, res) => {
   }
 };
 
+// Get all tickets for all users (admin-only access)
+export const getAllTickets = async (req, res) => {
+  try {
+    const tickets = await HelpAndSupport.find();
+
+    if (tickets.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'No tickets found',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      tickets,
+    });
+  } catch (err) {
+    console.error('Error retrieving all tickets:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve all tickets',
+    });
+  }
+};
+
+
 // Get a specific ticket by its ID
 export const getTicketById = async (req, res) => {
   const { ticketId } = req.params;
