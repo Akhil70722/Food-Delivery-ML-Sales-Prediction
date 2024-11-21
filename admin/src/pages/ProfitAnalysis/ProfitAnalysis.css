@@ -1,40 +1,90 @@
-/* src/components/ProfitAnalysis/ProfitAnalysis.css */
-
+/* General Styling */
 .profit-analysis {
     padding: 20px;
-    border-radius: 8px; /* Keep rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    font-family: Arial, sans-serif; /* Font family */
+    margin: 20px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
 }
 
+/* Header Styling */
 .profit-analysis h2 {
-    font-size: 24px; /* Font size for the header */
-    margin-bottom: 20px; /* Space below the header */
-    color: #333; /* Dark color for text */
+    font-size: 28px;
+    font-weight: bold;
+    color: #4CAF50; /* Green accent */
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/* Divider */
+.profit-analysis .divider {
+    height: 100%;
+    border-left: 2px dashed #ccc;
+    margin: 0 20px;
+}
+
+/* Table Styling */
 .profit-table {
-    width: 100%; /* Full width for the table */
-    border-collapse: collapse; /* Merge table borders */
-}
-
-.profit-table th,
-.profit-table td {
-    padding: 12px; /* Padding for table cells */
-    border: 1px solid #ddd; /* Light border */
-    text-align: left; /* Left align text */
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
 }
 
 .profit-table th {
-    background-color: #f5f5f5; /* Light grey background for table header */
-    color: #555; /* Darker text for header */
-    font-weight: 600; /* Bold font for header */
+    padding: 15px;
+    background-color: #4CAF50; /* Green header */
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.profit-table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ddd;
 }
 
 .profit-table tr:nth-child(even) {
-    background-color: #fdfdfd; /* Light grey background for even rows */
+    background-color: #f9f9f9; /* Light background for even rows */
 }
 
 .profit-table tr:hover {
     background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Chart Container Styling */
+.chart-container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.chart-container h3 {
+    font-size: 20px;
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .profit-analysis {
+        flex-direction: column;
+    }
+    .divider {
+        display: none;
+    }
+    .chart-container {
+        margin-top: 20px;
+    }
 }
