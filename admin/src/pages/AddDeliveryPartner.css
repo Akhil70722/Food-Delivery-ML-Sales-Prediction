@@ -1,0 +1,187 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  /* Form container */
+  .add-delivery-partner-form {
+    background: linear-gradient(135deg, #8a2be2, #4c9bfb);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 80px auto;
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Form Title */
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* Input Fields */
+  input {
+    width: 100%;
+    padding: 15px;
+    margin-top: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #4C9BFB;
+    box-shadow: 0 0 8px rgba(76, 155, 251, 0.6);
+  }
+  
+  input:invalid {
+    border-color: #e53e3e;
+    background-color: #ffe5e5;
+  }
+  
+  input::placeholder {
+    color: #aaa;
+  }
+  
+  input:focus::placeholder {
+    color: transparent;
+  }
+  
+  /* Button Styling */
+  button {
+    width: 100%;
+    padding: 15px;
+    background-color: #4C9BFB;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #3578cc;
+    transform: translateY(-2px);
+  }
+  
+  button:active {
+    background-color: #2b68a2;
+    transform: translateY(2px);
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 155, 251, 0.5);
+  }
+  
+  /* Delivery Partner List */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-5px);
+  }
+  
+  li .partner-info {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  li .delete-btn {
+    background: none;
+    border: none;
+    color: #e53e3e;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  li .delete-btn:hover {
+    color: #c53030;
+  }
+  
+  /* Form Success and Error Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Toast Notifications */
+  .toast-container {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-delivery-partner-form {
+      padding: 30px 20px;
+    }
+  
+    h2 {
+      font-size: 22px;
+    }
+  
+    input, button {
+      font-size: 14px;
+    }
+  
+    button {
+      padding: 12px;
+    }
+  
+    li {
+      padding: 12px;
+    }
+  
+    .partner-info {
+      font-size: 14px;
+    }
+  
+    li .delete-btn {
+      font-size: 20px;
+    }
+  }
+  

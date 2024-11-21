@@ -15,10 +15,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
     "food-del-backend": "file:",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.1",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.16",
     "nodemon": "^3.0.3",
     "stripe": "^14.17.0",
     "validator": "^13.11.0"

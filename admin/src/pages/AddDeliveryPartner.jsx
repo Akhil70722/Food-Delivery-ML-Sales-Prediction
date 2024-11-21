@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaTrashAlt } from 'react-icons/fa';
+import './AddDeliveryPartner.css';
 
 const AddDeliveryPartner = () => {
     const [formData, setFormData] = useState({

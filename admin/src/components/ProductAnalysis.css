@@ -1,0 +1,133 @@
+/* General Styling */
+.product-analysis {
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Header Styling */
+  .product-analysis h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #4a90e2;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-analysis h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #4a90e2;
+    margin: 15px auto;
+    border-radius: 2px;
+    animation: slideIn 1.5s ease-in-out infinite alternate;
+  }
+  
+  /* Product Dropdown */
+  .select-product {
+    padding: 12px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 350px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .select-product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .select-product option {
+    font-size: 16px;
+    padding: 10px;
+    color: #333;
+  }
+  
+  /* Chart Container */
+  .chart-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  
+  .chart-container div {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .chart-container div:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Chart Titles */
+  .chart-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .chart-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .product-analysis h1 {
+      font-size: 28px;
+    }
+  
+    .select-product {
+      width: 80%;
+    }
+  
+    .chart-container h2 {
+      font-size: 20px;
+    }
+  }
+  
+  /* Animation for Fading In */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animation for Sliding In */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  

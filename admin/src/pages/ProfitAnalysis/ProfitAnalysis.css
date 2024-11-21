@@ -1,40 +1,184 @@
-/* src/components/ProfitAnalysis/ProfitAnalysis.css */
-
+/* General Styling */
 .profit-analysis {
-    padding: 20px;
-    border-radius: 8px; /* Keep rounded corners */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    font-family: Arial, sans-serif; /* Font family */
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, rgba(243, 246, 249, 0.8), rgba(238, 242, 246, 0.8));
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    animation: fadeIn 0.8s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.profit-analysis:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Styling */
 .profit-analysis h2 {
-    font-size: 24px; /* Font size for the header */
-    margin-bottom: 20px; /* Space below the header */
-    color: #333; /* Dark color for text */
+    font-size: 36px;
+    font-weight: 700;
+    color: #007BFF;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: linear-gradient(90deg, #007BFF, #00BFFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-bottom: 10px;
 }
 
+.profit-analysis h2::after {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 4px;
+    background: linear-gradient(90deg, #007BFF, #00D4FF);
+    margin: 15px auto 0;
+    border-radius: 2px;
+    animation: slideIn 1.2s ease infinite alternate;
+}
+
+/* Table Styling */
 .profit-table {
-    width: 100%; /* Full width for the table */
-    border-collapse: collapse; /* Merge table borders */
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.9s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.8); /* Glassy look */
 }
 
-.profit-table th,
-.profit-table td {
-    padding: 12px; /* Padding for table cells */
-    border: 1px solid #ddd; /* Light border */
-    text-align: left; /* Left align text */
-}
-
+/* Table Header Styling */
 .profit-table th {
-    background-color: #f5f5f5; /* Light grey background for table header */
-    color: #555; /* Darker text for header */
-    font-weight: 600; /* Bold font for header */
+    padding: 18px;
+    background: linear-gradient(135deg, #00BFFF, #007BFF);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.profit-table th:hover {
+    background: linear-gradient(135deg, #007BFF, #00D4FF);
+}
+
+/* Table Body Styling */
+.profit-table td {
+    padding: 16px;
+    text-align: center;
+    font-size: 15px;
+    color: #444;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .profit-table tr:nth-child(even) {
-    background-color: #fdfdfd; /* Light grey background for even rows */
+    background-color: rgba(243, 246, 249, 0.8); /* Soft pastel color */
+    transition: background 0.3s ease;
 }
 
 .profit-table tr:hover {
-    background-color: #f1f1f1; /* Highlight row on hover */
+    background-color: rgba(0, 183, 255, 0.1);
+    color: #0056b3;
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.profit-table td.profit {
+    font-weight: 700;
+    color: #28a745;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Custom Scrollbar Styling */
+.profit-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #007BFF #f0f0f0;
+}
+
+.profit-table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.profit-table-wrapper::-webkit-scrollbar-thumb {
+    background-color: #007BFF;
+    border-radius: 10px;
+}
+
+.profit-table-wrapper::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}
+
+/* Interactive Hover Animation */
+.profit-table tr:hover {
+    background-color: rgba(0, 183, 255, 0.1);
+    color: #0056b3;
+    transform: translateY(-5px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profit-analysis {
+        padding: 20px;
+    }
+    .profit-table th, .profit-table td {
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profit-analysis h2 {
+        font-size: 28px;
+    }
+    .profit-table th, .profit-table td {
+        font-size: 10px;
+        padding: 10px;
+    }
 }
