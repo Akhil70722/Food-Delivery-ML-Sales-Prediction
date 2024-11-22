@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-google-maps/api": "^2.20.3",
     "@stripe/stripe-js": "^3.0.3",
+    "@vis.gl/react-google-maps": "^1.4.0",
     "axios": "^1.6.7",
     "food-del": "file:",
     "react": "^18.2.0",

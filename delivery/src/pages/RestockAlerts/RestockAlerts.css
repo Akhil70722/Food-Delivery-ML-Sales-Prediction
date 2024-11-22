@@ -1,0 +1,41 @@
+/* src/components/RestockAlerts/RestockAlerts.css */
+
+.restock-alerts {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.restock-alerts h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.restock-alerts form {
+    display: flex;
+    flex-direction: column;
+}
+
+.restock-alerts input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.restock-alerts button {
+    padding: 10px;
+    background-color: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.restock-alerts button:hover {
+    background-color: #e0a800;
+}

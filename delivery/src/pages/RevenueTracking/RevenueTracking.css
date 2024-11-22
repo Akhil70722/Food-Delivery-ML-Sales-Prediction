@@ -1,0 +1,153 @@
+/* Global Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #f4f5f7, #eef2f3);
+    color: #333;
+}
+
+/* Revenue Tracking Container */
+.revenue-tracking {
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #ffffff, #f7f9fc);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.revenue-tracking:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+.revenue-tracking h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4caf50; /* Vibrant green accent */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: inline-block;
+}
+
+.revenue-tracking h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #4caf50;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Table Styling */
+.revenue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #ffffff, #f9fafb);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.revenue-table th {
+    padding: 16px;
+    background: linear-gradient(to right, #4caf50, #388e3c); /* Green gradient header */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.revenue-table td {
+    padding: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.revenue-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light grey for even rows */
+}
+
+.revenue-table tr:nth-child(odd) {
+    background-color: #ffffff; /* White for odd rows */
+}
+
+.revenue-table tr:hover {
+    background: rgba(76, 175, 80, 0.1); /* Light green on hover */
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Interactive Hover Animations */
+.revenue-table tr td:hover {
+    background: #4caf50;
+    color: #ffffff;
+    font-weight: bold;
+    transform: scale(1.1);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Divider Animation (Optional) */
+.divider {
+    height: 100%;
+    border-left: 2px solid rgba(200, 200, 200, 0.5);
+    margin: 0 30px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .revenue-tracking {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .revenue-tracking h2 {
+        font-size: 24px;
+    }
+
+    .revenue-table th,
+    .revenue-table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #4caf50;
+    }
+    50% {
+        box-shadow: 0 0 20px #4caf50;
+    }
+    100% {
+        box-shadow: 0 0 5px #4caf50;
+    }
+}

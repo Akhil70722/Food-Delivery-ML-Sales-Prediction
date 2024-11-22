@@ -27,7 +27,7 @@ const placeOrder = async (req, res) => {
                 product_data: {
                     name: item.name
                 },
-                unit_amount: item.price * 100 
+                unit_amount: item.price * 100
             },
             quantity: item.quantity
         }))
@@ -83,7 +83,7 @@ const placeOrderCod = async (req, res) => {
 // Listing Order for Admin panel
 const listOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
+        const orders = await orderModel.find({}).populate({ path: "userId", select: "name email" });
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
@@ -94,7 +94,7 @@ const listOrders = async (req, res) => {
 // User Orders for Frontend
 const userOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({ userId: req.body.userId });
+        const orders = await orderModel.find({ userId: req.body.userId }).populate({ path: "userId", select: "name email" }).populate({ path: "deliveryPartner" });
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);
@@ -103,9 +103,8 @@ const userOrders = async (req, res) => {
 }
 
 const updateStatus = async (req, res) => {
-    console.log(req.body);
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status });
+        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status, deliveryPartner: req.body.deliveryPartnerId });
         res.json({ success: true, message: "Status Updated" })
     } catch (error) {
         res.json({ success: false, message: "Error" })
@@ -117,8 +116,7 @@ const verifyOrder = async (req, res) => {
     const { orderId, success } = req.body;
     try {
         if (success === "true") {
-            await orderModel.findByIdAndUpdate(orderId, { payment: true });
-            res.json({ success: true, message: "Paid" })
+            await orderModel.findByIdAndUpdate(orderId, { payment: true })
         }
         else {
             await orderModel.findByIdAndDelete(orderId)

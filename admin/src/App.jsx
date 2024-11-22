@@ -17,8 +17,6 @@ import CancellationsRefunds from './pages/CancellationsRefunds/CancellationsRefu
 import FeedbackResponse from './pages/FeedbackResponse/FeedbackResponse';
 import RevenueTracking from './pages/RevenueTracking/RevenueTracking';
 import ProfitAnalysis from './pages/ProfitAnalysis/ProfitAnalysis';
-import Delivery from './pages/Delivery';
-import Tracking from './components/Tracking';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddDeliveryPartner from './pages/AddDeliveryPartner';
@@ -49,10 +47,9 @@ const AppContent = () => {
       <hr />
       <div className="app-content">
         <Routes>
-          <Route path='/delivery/*' element={<DeliverySidebar />} />
           <Route path='*' element={<Sidebar />} />
         </Routes>
-        
+
         <Routes>
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
@@ -60,18 +57,16 @@ const AppContent = () => {
           <Route path="/productanalysis" element={<ProductAnalysis />} />
           <Route path="/userhelpandsupport" element={<UserHelpAndSupport />} />
           <Route path="/adddeliverypartner" element={<AddDeliveryPartner />} />
-          <Route path="/delivery/tracking" element={<Tracking />} />
           <Route path="/delivery/orders" element={<Orders />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/customer" element={<Customer />} />
-          <Route path="/customer-profiles" element={<CustomerProfiles />} /> 
-          <Route path="/supplier-management" element={<SupplierManagement />} /> 
-          <Route path="/restock-alerts" element={<RestockAlerts />} /> 
+          <Route path="/customer-profiles" element={<CustomerProfiles />} />
+          <Route path="/supplier-management" element={<SupplierManagement />} />
+          <Route path="/restock-alerts" element={<RestockAlerts />} />
           <Route path="/cancellations-refunds" element={<CancellationsRefunds />} />
           <Route path="/feedback-response" element={<FeedbackResponse />} />
           <Route path="/revenue-tracking" element={<RevenueTracking />} />
           <Route path="/profit-analysis" element={<ProfitAnalysis />} />
-          <Route path="/delivery" element={<Delivery />} />
         </Routes>
       </div>
     </div>

@@ -1,0 +1,56 @@
+.feedback-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    height: auto; /* Fit content height */
+    width: calc(100% - 240px); /* Adjust width to account for sidebar */
+    padding: 20px; /* Some padding for spacing */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    position: relative; /* Position relative to avoid overlap */
+    margin-top: 20px; /* Space below navbar */
+    margin-left: 20px; /* Space from the left edge (sidebar) */
+}
+
+h2 {
+    font-size: 24px; /* Larger font for header */
+    margin-bottom: 20px; /* Space below header */
+    color: #333; /* Dark color for text */
+}
+
+textarea {
+    width: 100%; /* Full width */
+    height: 150px; /* Fixed height for textarea */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Inner spacing */
+    font-size: 16px; /* Readable font size */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    resize: none; /* Prevent resizing */
+}
+
+textarea:focus {
+    outline: none; /* Remove default outline */
+    border-color: #d9534f; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5); /* Shadow effect on focus */
+}
+
+button {
+    margin-top: 10px; /* Space above button */
+    padding: 10px 15px; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #d9534f; /* Primary button color */
+    color: white; /* Text color */
+    font-size: 16px; /* Button text size */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+button:hover {
+    background-color: #c9302c; /* Darken button on hover */
+}
+
+.response-message {
+    text-align: center; /* Center the response message */
+    font-size: 18px; /* Slightly larger text for response */
+    color: #5cb85c; /* Success color for message */
+}

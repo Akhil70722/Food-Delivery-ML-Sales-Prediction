@@ -10,9 +10,10 @@
 }
 
 .my-orders-order {
-    display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 2fr 1fr;
+    display: flex;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
     align-items: center;
+    justify-content: space-between;
     gap: 30px;
     font-size: 14px;
     padding: 10px 20px;
@@ -42,16 +43,15 @@
     color: #454545;
 }
 
+.delivery-location {
+    width: 100%;
+}
+
 /* Styling for the Google Maps iframe section */
 .map-section iframe {
     height: 65vh; /* Adjust height as needed */
     width: 100%;
     border-radius: 5px;
-}
-
-#map {
-    width: 50%;
-    margin-left: 50px;
 }
 
 @media (max-width: 900px) {

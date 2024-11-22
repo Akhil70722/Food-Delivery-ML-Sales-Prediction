@@ -1,0 +1,103 @@
+.sidebar {
+    width: 18%;
+    height: 100vh; /* Ensures the sidebar takes up the full height of the viewport */
+    border-right: 1.5px solid #A9A9A9;
+    background-color: #f7f7f7;
+    font-size: max(1vw, 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding-top: 20px;
+    overflow-y: auto; /* Enables vertical scrolling */
+    scrollbar-width: thin; /* Firefox scrollbar */
+    scrollbar-color: #d6d6d6 #f7f7f7; /* Thumb and track colors */
+}
+
+/* Custom scrollbar for WebKit browsers */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f7f7f7;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #d6d6d6;
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #a9a9a9;
+}
+
+.sidebar-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 0 10px; /* Added padding for better alignment */
+}
+
+/* Other styles remain unchanged */
+.sidebar-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #333;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 85%; /* Adjusted for better alignment */
+    margin: 0 auto;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.sidebar-option img {
+    width: 24px;
+}
+
+.sidebar-option p {
+    font-size: 15px;
+    color: #555;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.sidebar-option:hover {
+    background-color: #ffe6e1;
+    color: #d9534f;
+    transform: scale(1.04);
+    box-shadow: 1px 1px 6px rgba(217, 83, 79, 0.3);
+}
+
+.sidebar-option.active {
+    background-color: #fff0ed;
+    border: 1px solid #d9534f;
+    color: #d9534f;
+    box-shadow: 0 2px 4px rgba(217, 83, 79, 0.3);
+}
+
+.sidebar-option.active img {
+    filter: hue-rotate(15deg) brightness(90%);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar-option p {
+        display: none;
+    }
+    .sidebar-option {
+        padding: 10px;
+        justify-content: center;
+        gap: 0;
+    }
+}

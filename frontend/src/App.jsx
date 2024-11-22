@@ -69,7 +69,7 @@ const App = () => {
       <ToastContainer />
       {/* <div className='relative'> */}
 
-        
+
 
         {showLogin && (
           <div className="fixed z-50 w-[100vw]">
@@ -83,8 +83,9 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<PlaceOrder />} />
             <Route path="/myorders" element={<MyOrders />} />
-            <Route path="/myorders/delivery-details/:id" element={<DeliveryDetails />} />
-            <Route path="/track-order/:orderId" element={<TrackOrder />} />
+            <Route path="/myorders/delivery-details/:orderId" element={<DeliveryDetails />} />
+            {/* <Route path="/track-order/:orderId" element={<TrackOrder />} /> */}
+            <Route path="/track-order/:orderId" element={<DeliveryDetails />} />
             <Route path="/verify" element={<Verify />} />
             <Route path="/about" element={<About />} />
             <Route path="/delivery" element={<Delivery />} />

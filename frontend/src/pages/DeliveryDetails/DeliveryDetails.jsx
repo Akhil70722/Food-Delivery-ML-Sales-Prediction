@@ -14,19 +14,19 @@ const DeliveryDetails = () => {
           <strong>Order ID:</strong> {order._id}
         </p>
         <p>
-          <strong>Partner Name:</strong> {order.deliveryPartnerName || 'N/A'}
+          <strong>Partner Name:</strong> {order.deliveryPartner.name || 'N/A'}
         </p>
         <p>
-          <strong>Partner Contact:</strong> {order.deliveryPartnerContact || 'N/A'}
+          <strong>Partner Contact:</strong> {order.deliveryPartner.phone || 'N/A'}
         </p>
         <p>
           <strong>Delivery Status:</strong> {order.status}
         </p>
         <p>
-          <strong>Estimated Delivery:</strong> {order.estimatedDelivery || 'N/A'}
+          <strong>Estimated Delivery:</strong> {`${order.estimatedDeliveryTime ?? "-"} min` || 'N/A'}
         </p>
         <p>
-          <strong>Delivery Address:</strong> {order.deliveryLocation}
+          <strong>Delivery Address:</strong> {JSON.stringify(order.address)}
         </p>
       </div>
     </div>

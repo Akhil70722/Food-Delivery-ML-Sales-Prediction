@@ -1,9 +1,12 @@
 // src/components/Map/Map.jsx
 
+import { APIProvider, AdvancedMarker, Pin, Map as _Map } from '@vis.gl/react-google-maps';
+import PropTypes from 'prop-types';
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const Map = () => {
+const Map = (props) => {
+  const { location, className } = props;
+
   const mapContainerStyle = {
     width: '100%',
     height: '400px', // Adjust height as needed
@@ -11,21 +14,44 @@ const Map = () => {
 
   // Set initial center position for the map
   const center = {
-    lat: 40.7128, // Example: New York City
-    lng: -74.0060,
+    lat: location.lat,
+    lng: location.lng,
   };
 
   return (
-    <LoadScript googleMapsApiKey={ProcessingInstruction.env.AIzaSyCJbxH9d9Yyr3eM9WKhI_fJpiD6jftaK3I}> 
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        center={center}
-        zoom={12} // Adjust zoom level as needed
-      >
-        <Marker position={center} />
-      </GoogleMap>
-    </LoadScript>
+    <APIProvider
+    solutionChannel="google-maps"
+    apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+  >
+    <_Map
+      id='map'
+      mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
+      style={mapContainerStyle}
+      className={className}
+      defaultZoom={8}
+      defaultCenter={center}
+      gestureHandling={'greedy'}
+      disableDefaultUI={true}
+      mapType={'roadmap'}
+    >
+      <AdvancedMarker position={center}>
+        <Pin
+          background={"#FBBC04"}
+          glyphColor={"#000"}
+          borderColor={"#000"}
+        />
+      </AdvancedMarker>
+    </_Map>
+  </APIProvider>
   );
+};
+
+Map.propTypes = {
+  className: PropTypes.string,
+  location: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Map;
