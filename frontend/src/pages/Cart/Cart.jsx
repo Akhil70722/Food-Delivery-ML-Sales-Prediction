@@ -25,7 +25,7 @@ const Cart = () => {
   // List of valid promo codes and their discounts
   const validPromoCodes = {
     DISCOUNT10: 0.1, // 10% discount
-    SAVE50: 50, // Flat ₹50 discount
+    AKHIL50: 50, // Flat ₹50 discount
   };
 
   // Apply promo code logic
