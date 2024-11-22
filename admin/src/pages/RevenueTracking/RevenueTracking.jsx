@@ -6,86 +6,6 @@ import { Bar, Line, Pie } from 'react-chartjs-2';
 import * as XLSX from 'xlsx';
 import './RevenueTracking.css';
 
-const RevenueTracking = () => {
-  const [data, setData] = useState([]);
-  // Sample data for revenue tracking (in Rupees)
-  const monthlyRevenue = [
-    { month: 'January', amount: 50000 },
-    { month: 'February', amount: 60000 },
-    { month: 'March', amount: 75000 },
-    { month: 'April', amount: 80000 },
-    { month: 'May', amount: 95000 },
-    { month: 'June', amount: 85000 },
-    { month: 'July', amount: 90000 },
-    { month: 'August', amount: 100000 },
-    { month: 'September', amount: 110000 },
-    { month: 'October', amount: 120000 },
-    { month: 'November', amount: 115000 },
-    { month: 'December', amount: 130000 },
-  ];
-
-  // Load data from XLSX file
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('../../../sales_data.xlsx'); // Replace with your file path
-      const arrayBuffer = await response.arrayBuffer();
-      const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet);
-      setData(jsonData);
-    };
-
-    fetchData();
-  }, []);
-
-  if (data.length === 0) return <div>Loading...</div>;
-
-    // Process data for graphs
-  const profitOverTime = data.map(item => ({
-    date: new Date(item['Date']),
-    profit: parseFloat(item['Sales Amount']) - parseFloat(item['Discount Amount']),
-  }));
-
-  // Monthly sales profile data
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const monthlySales = months.map(month => ({
-    month,
-    profit: profitOverTime.filter(item => item.date.getMonth() === months.indexOf(month)).reduce((sum, item) => sum + item.profit, 0),
-  }));
-
-  return (
-    <div className="revenue-tracking flex gap-10 mx-auto px-20">
-      <div>
-
-        <h2>Monthly Revenue Tracking</h2>
-        <table className="revenue-table">
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Revenue (in ₹)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {monthlySales.map((data, index) => (
-              <tr key={index}>
-                <td>{data.month}</td>
-                <td>₹ {data.profit.toLocaleString()}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className='h-[100%] border border-black/50 mx-10'></div>
-      <RevenueTrackingCharts />
-    </div>
-  );
-};
-
-export default RevenueTracking;
-
-
-
 // import React, { useState, useEffect } from 'react';
 // import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import {
@@ -116,7 +36,7 @@ ChartJS.register(
   TimeScale
 );
 
-const RevenueTrackingCharts = () => {
+const RevenueTracking = () => {
   const [revenueData, setRevenueData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -173,6 +93,13 @@ const RevenueTrackingCharts = () => {
       salesAmount,
     };
   });
+
+  // Monthly sales profile data
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const monthlySales = months.map(month => ({
+    month,
+    profit: revenueByDate.filter(item => new Date(item.date).getMonth() === months.indexOf(month)).reduce((sum, item) => sum + item.salesAmount, 0),
+  }));
 
   // Sort the revenue data by date
   revenueByDate.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -356,18 +283,43 @@ const RevenueTrackingCharts = () => {
   if (loading) return <div>Loading charts...</div>;
 
   return (
-    <div className='flex flex-col gap-10'>
-      <h2>Revenue Tracking</h2>
-      <h3>Total Revenue Over Time</h3>
-      <Line data={totalRevenueOverTimeData} options={options} />
-      <h3>Revenue by Customer Segment</h3>
-      <Bar data={revenueByCustomerSegmentData} />
-      <h3>Revenue by Item</h3>
-      <Bar data={revenueByItemData} />
-      <h3>Revenue by Day of the Week</h3>
-      <Bar data={revenueByDayData} />
-      <h3>Revenue by Geographical Location</h3>
-      <Pie data={revenueByLocationData} />
+    <div className="revenue-tracking flex gap-10 mx-auto px-20">
+      <div>
+
+        <h2>Monthly Revenue Tracking</h2>
+        <table className="revenue-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Revenue (in ₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {monthlySales.map((data, index) => (
+              <tr key={index}>
+                <td>{data.month}</td>
+                <td>₹ {data.profit.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className='h-[100%] border border-black/50 mx-10'></div>
+      <div className='flex flex-col gap-10'>
+        <h2>Revenue Tracking</h2>
+        <h3>Total Revenue Over Time</h3>
+        <Line data={totalRevenueOverTimeData} options={options} />
+        <h3>Revenue by Customer Segment</h3>
+        <Bar data={revenueByCustomerSegmentData} />
+        <h3>Revenue by Item</h3>
+        <Bar data={revenueByItemData} />
+        <h3>Revenue by Day of the Week</h3>
+        <Bar data={revenueByDayData} />
+        <h3>Revenue by Geographical Location</h3>
+        <Pie data={revenueByLocationData} />
+      </div>
     </div>
   );
 };
+
+export default RevenueTracking;
