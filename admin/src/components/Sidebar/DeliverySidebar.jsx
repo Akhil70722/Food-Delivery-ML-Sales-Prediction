@@ -10,7 +10,6 @@ const DeliverySidebar = () => {
           to="/delivery/orders"
           className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
         >
-          <img src="/icons/order-icon.svg" alt="Orders Icon" />
           <p>Orders</p>
         </NavLink>
 
@@ -18,7 +17,6 @@ const DeliverySidebar = () => {
           to="/delivery/tracking"
           className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
         >
-          <img src="/icons/tracking-icon.svg" alt="Tracking Icon" />
           <p>Tracking</p>
         </NavLink>
 
@@ -26,7 +24,6 @@ const DeliverySidebar = () => {
           to="/delivery/settings"
           className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
         >
-          <img src="/icons/settings-icon.svg" alt="Settings Icon" />
           <p>Settings</p>
         </NavLink>
       </div>

@@ -1,0 +1,89 @@
+/* General Container Styling */
+.product-analysis-container {
+    padding: 40px;
+    background-color: #f9fafb;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading Styling */
+  .product-analysis-container h1 {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  
+  /* Product Select Dropdown Styling */
+  select {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+  }
+  
+  select:focus {
+    border-color: #4f46e5;
+    outline: none;
+  }
+  
+  /* Chart Container Layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .grid .chart-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .grid .chart-container h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4b5563;
+  }
+  
+  /* Specific Chart Styling */
+  .chart-container .chart {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+      padding: 0 10px;
+    }
+  
+    .product-analysis-container {
+      padding: 20px;
+    }
+  
+    .product-analysis-container h1 {
+      font-size: 28px;
+    }
+  
+    select {
+      max-width: 100%;
+    }
+  }
+  

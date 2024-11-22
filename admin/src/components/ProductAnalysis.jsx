@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Line, Bar, Pie, Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import * as XLSX from 'xlsx';
+import './ProductAnalysis.css';
 
 // Register Chart.js components
 ChartJS.register(
