@@ -40,13 +40,6 @@ const Sidebar = () => {
           <img src={assets.order_icon} alt="List" />
           <p>List Items</p>
         </NavLink>
-        <NavLink
-          to="/delivery/orders"
-          className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
-        >
-          <img src="/icons/order-icon.svg" alt="Orders Icon" />
-          <p>Orders</p>
-        </NavLink>
         <NavLink to="/adddeliverypartner" className="sidebar-option">
           <img src={assets.order_icon} alt="deli" />
           <p>Add Delivery Partner</p>
@@ -82,6 +75,10 @@ const Sidebar = () => {
         <NavLink to="/profit-analysis" className="sidebar-option">
           <img src={assets.profit_icon} alt="Profit Analysis" />
           <p>Profit Analysis</p>
+        </NavLink>
+        <NavLink to='/sales-analysis' className="sidebar-option">
+          <img src={assets.analysis_icon} alt="Sales Analysis" />
+          <p>Sales Analysis</p>
         </NavLink>
       </div>
       <div
