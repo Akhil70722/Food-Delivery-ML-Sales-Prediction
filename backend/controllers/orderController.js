@@ -1,3 +1,4 @@
+import DeliveryPartner from "../models/DeliveryPartner.js";
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js"
 import Stripe from "stripe";
@@ -94,7 +95,12 @@ const listOrders = async (req, res) => {
 // User Orders for Frontend
 const userOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({ userId: req.body.userId }).populate({ path: "userId", select: "name email" }).populate({ path: "deliveryPartner" });
+        const orders = await orderModel.find({ userId: req.body.userId }).populate({ path: "userId", select: "name email" })
+        for (const order of orders) {
+            if (order.deliveryPartner) {
+                order.deliveryPartner = await DeliveryPartner.findById(order.deliveryPartner)
+            }
+        }
         res.json({ success: true, data: orders })
     } catch (error) {
         console.log(error);

@@ -68,7 +68,7 @@ const MyOrders = () => {
     <div className='my-orders'>
       <h2>My Orders</h2>
       <div className='container'>
-        {data.length > 0 ? (
+        {data?.length > 0 ? (
           data.map((order, index) => (
             <div key={index}>
               <div className='my-orders-order'>
