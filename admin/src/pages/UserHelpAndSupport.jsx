@@ -49,7 +49,8 @@ const UserHelpAndSupport = () => {
           {tickets.map((ticket) => (
             <div key={ticket._id} className="bg-white p-6 rounded-lg shadow-lg">
               <p className="text-2xl font-semibold text-gray-900">{ticket.subject}</p>
-              <p className="text-lg font-medium text-gray-600">Order ID: {ticket.orderId}</p>
+              <p className="font-medium text-gray-600">User ID: {ticket.user}</p>
+              <p className="font-medium text-gray-600">Order ID: {ticket.orderId}</p>
               <p className="text-gray-600 mb-4">Status: <span className="font-medium text-blue-500">{ticket.status}</span></p>
               <p className="text-gray-600 mb-4">Created on: {new Date(ticket.createdAt).toLocaleString()}</p>
               {ticket.status === "open" ? <button type="button" className="p-2 bg-gray-300"
