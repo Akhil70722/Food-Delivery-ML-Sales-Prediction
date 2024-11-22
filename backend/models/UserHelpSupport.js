@@ -7,6 +7,10 @@ const helpAndSupportSchema = new mongoose.Schema(
       required: true,
       // ref: 'User', // Reference to the User collection if needed
     },
+    orderId: {
+      type: String,
+      // ref: 'order', // Reference to the User collection if needed
+    },
     subject: {
       type: String,
       required: true,

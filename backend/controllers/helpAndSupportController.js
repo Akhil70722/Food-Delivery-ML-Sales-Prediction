@@ -2,12 +2,13 @@ import HelpAndSupport from '../models/UserHelpSupport.js';
 
 // Create a new help and support ticket
 export const createTicket = async (req, res) => {
-  const { user, subject } = req.body;
+  const { user, subject, orderId } = req.body;
 
   try {
     const newTicket = new HelpAndSupport({
       user,
       subject,
+      orderId,
       messages: [], // Initially no messages
       status: 'open', // Default status
     });
@@ -81,8 +82,7 @@ export const getTicketsByUser = async (req, res) => {
   const { userId } = req.params;
 
   try {
-    console.log(userId)
-    const tickets = await HelpAndSupport.find({ user: userId });
+    const tickets = await HelpAndSupport.find({ user: userId }).sort({ updatedAt: -1 });
 
     if (tickets.length === 0) {
       return res.status(404).json({
@@ -107,7 +107,7 @@ export const getTicketsByUser = async (req, res) => {
 // Get all tickets for all users (admin-only access)
 export const getAllTickets = async (req, res) => {
   try {
-    const tickets = await HelpAndSupport.find();
+    const tickets = await HelpAndSupport.find({}).sort({ updatedAt: -1 });
 
     if (tickets.length === 0) {
       return res.status(404).json({

@@ -7,6 +7,7 @@ const HelpAndSupport = () => {
   const [ticketId, setTicketId] = useState('');
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
+  const [orderId, setOrderId] = useState('');
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState('');
 
@@ -68,6 +69,7 @@ const HelpAndSupport = () => {
       const userId = userData?.email;
       const response = await axios.post('http://localhost:4000/api/help-support/create', {
         user: userId,
+        orderId,
         subject,
       });
       setUserTickets([response.data.ticket, ...userTickets]);
@@ -94,9 +96,10 @@ const HelpAndSupport = () => {
                   <p className="text-center">No previous requests found.</p>
                 ) : (
                   userTickets.map((ticket) => (
-                    <div key={ticket._id} className="ticket flex justify-between mb-6 p-4 border border-gray-300 rounded-md">
-                      <h6 className="text-lg ">{ticket.subject}</h6>
-                      <p className="text-gray-500">Status: {ticket.status}</p>
+                    <div key={ticket._id} className="text-black ticket flex justify-between mb-6 p-4 border border-gray-300 rounded-md">
+                      <h6 className="text-lg">{ticket.subject}</h6>
+                      <p className="">Order ID: {ticket.orderId}</p>
+                      <p className="">Status: {ticket.status}</p>
                       {/* <div>
                         <h4 className="mt-4 font-medium">Messages:</h4>
                         {ticket.messages.map((msg, index) => (
@@ -140,10 +143,18 @@ const HelpAndSupport = () => {
               <form onSubmit={handleCreateTicket} className="space-y-4">
                 <input
                   type="text"
-                  className="w-full p-4 border border-gray-300 rounded-md"
+                  className="w-full p-4 border border-gray-300 rounded-md text-black"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   placeholder="Enter subject"
+                  required
+                />
+                <input
+                  type="text"
+                  className="w-full p-4 border border-gray-300 rounded-md text-black"
+                  value={orderId}
+                  onChange={(e) => setOrderId(e.target.value)}
+                  placeholder="Enter Order ID"
                   required
                 />
                 <button className="bg-orange-500 text-white p-2 rounded-md hover:bg-green-600" type="submit">

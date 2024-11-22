@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const UserHelpAndSupport = () => {
   const [tickets, setTickets] = useState([]);
@@ -15,6 +15,19 @@ const UserHelpAndSupport = () => {
       setLoading(false);
     } catch (error) {
       console.error('Error fetching tickets:', error);
+      setLoading(false);
+    }
+  };
+  const updateTicketStatus = async (ticket, status) => {
+    try {
+      setLoading(true);
+      await axios.put(`http://localhost:4000/api/help-support/${ticket._id}/status`, {
+        status,
+      });
+      await fetchTickets();
+      setLoading(false);
+    } catch (error) {
+      console.error('Error updating ticket:', error);
       setLoading(false);
     }
   };
@@ -35,8 +48,20 @@ const UserHelpAndSupport = () => {
         <div className="space-y-6">
           {tickets.map((ticket) => (
             <div key={ticket._id} className="bg-white p-6 rounded-lg shadow-lg">
-              <h2 className="text-2xl font-semibold text-gray-900">{ticket.subject}</h2>
+              <p className="text-2xl font-semibold text-gray-900">{ticket.subject}</p>
+              <p className="text-lg font-medium text-gray-600">Order ID: {ticket.orderId}</p>
               <p className="text-gray-600 mb-4">Status: <span className="font-medium text-blue-500">{ticket.status}</span></p>
+              <p className="text-gray-600 mb-4">Created on: {new Date(ticket.createdAt).toLocaleString()}</p>
+              {ticket.status === "open" ? <button type="button" className="p-2 bg-gray-300"
+              onClick={() => updateTicketStatus(ticket, 'in-progress')}
+              >
+                Mark as In Progress
+              </button>: <></>}
+              {ticket.status === "in-progress" ? <button type="button" className="p-2 bg-gray-300"
+              onClick={() => updateTicketStatus(ticket, 'resolved')}
+              >
+                Mark as resolved
+              </button>: <></>}
 
               {/* <div className="messages space-y-4">
                 <h3 className="text-xl font-semibold text-gray-800">Messages:</h3>
