@@ -40,6 +40,12 @@ const Sidebar = () => {
           <img src={assets.order_icon} alt="List" />
           <p>List Items</p>
         </NavLink>
+        <NavLink
+          to="/delivery/orders"
+          className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
+        >
+          <p>Orders</p>
+        </NavLink>
         <NavLink to="/adddeliverypartner" className="sidebar-option">
           <img src={assets.order_icon} alt="deli" />
           <p>Add Delivery Partner</p>
