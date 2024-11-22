@@ -65,4 +65,15 @@ const registerUser = async (req,res) => {
     }
 }
 
-export {loginUser, registerUser}
+//get all users
+const getAllUsers = async (req,res) => {
+    try{
+        const users = await userModel.find({}, "-password")
+        res.json(users)
+    } catch(error){
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
+export {loginUser, registerUser, getAllUsers}

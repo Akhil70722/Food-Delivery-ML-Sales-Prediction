@@ -1,79 +1,33 @@
 // src/components/CustomerProfiles/CustomerProfiles.jsx
 
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import './CustomerProfiles.css';
 
 const CustomerProfiles = () => {
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        address: '',
-    });
+    const [customers, setCustomers] = useState([]);
 
-    const onSubmitHandler = async (event) => {
-        event.preventDefault();
-        
-        const response = await axios.post('/api/customers/add', data);
-        if (response.data.success) {
-            toast.success(response.data.message);
-            setData({
-                name: '',
-                email: '',
-                phone: '',
-                address: '',
-            });
-        } else {
-            toast.error(response.data.message);
-        }
-    };
+    const fetchCustomers = async () => {
+        try {
+            const res = await axios.get('http://localhost:4000/api/user');
+            setCustomers(res.data);
+        } catch (error) {
+            console.log(error);
+    }};
 
-    const onChangeHandler = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setData((prevData) => ({ ...prevData, [name]: value }));
-    };
+    useEffect(() => {
+        fetchCustomers();
+    }, []);
 
     return (
         <div className='customer-profiles'>
-            <h2>Add Customer Profile</h2>
-            <form onSubmit={onSubmitHandler}>
-                <input
-                    name='name'
-                    onChange={onChangeHandler}
-                    value={data.name}
-                    type='text'
-                    placeholder='Customer Name'
-                    required
-                />
-                <input
-                    name='email'
-                    onChange={onChangeHandler}
-                    value={data.email}
-                    type='email'
-                    placeholder='Email'
-                    required
-                />
-                <input
-                    name='phone'
-                    onChange={onChangeHandler}
-                    value={data.phone}
-                    type='tel'
-                    placeholder='Phone Number'
-                    required
-                />
-                <input
-                    name='address'
-                    onChange={onChangeHandler}
-                    value={data.address}
-                    type='text'
-                    placeholder='Address'
-                    required
-                />
-                <button type='submit'>Add Customer</button>
-            </form>
+            <h1>Customer Profiles</h1>
+                {customers.map((customer) => (
+                    <div key={customer._id} className='customer-profile'>
+                        <h3>Name: {customer.name}</h3>
+                        <p>Email: {customer.email}</p>
+                    </div>
+                ))}
         </div>
     );
 };

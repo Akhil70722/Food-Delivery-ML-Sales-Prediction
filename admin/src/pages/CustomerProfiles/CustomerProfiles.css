@@ -3,8 +3,21 @@
 .customer-profiles {
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 100dvh;
+    overflow-y: auto;
+}
+
+.customer-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .customer-profiles h2 {
