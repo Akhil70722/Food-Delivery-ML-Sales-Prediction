@@ -1,12 +1,13 @@
 // src/components/RevenueTracking/RevenueTracking.jsx
 // import React from 'react';
-import './RevenueTracking.css';
-import React, { useState, useEffect } from 'react';
-import * as XLSX from 'xlsx';
-import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import 'chartjs-adapter-date-fns';
+import React, { useEffect, useState } from 'react';
+import { Bar, Line, Pie } from 'react-chartjs-2';
+import * as XLSX from 'xlsx';
+import './RevenueTracking.css';
 
 const RevenueTracking = () => {
+  const [data, setData] = useState([]);
   // Sample data for revenue tracking (in Rupees)
   const monthlyRevenue = [
     { month: 'January', amount: 50000 },
@@ -23,6 +24,36 @@ const RevenueTracking = () => {
     { month: 'December', amount: 130000 },
   ];
 
+  // Load data from XLSX file
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('../../../sales_data.xlsx'); // Replace with your file path
+      const arrayBuffer = await response.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+      setData(jsonData);
+    };
+
+    fetchData();
+  }, []);
+
+  if (data.length === 0) return <div>Loading...</div>;
+
+    // Process data for graphs
+  const profitOverTime = data.map(item => ({
+    date: new Date(item['Date']),
+    profit: parseFloat(item['Sales Amount']) - parseFloat(item['Discount Amount']),
+  }));
+
+  // Monthly sales profile data
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const monthlySales = months.map(month => ({
+    month,
+    profit: profitOverTime.filter(item => item.date.getMonth() === months.indexOf(month)).reduce((sum, item) => sum + item.profit, 0),
+  }));
+
   return (
     <div className="revenue-tracking flex gap-10 mx-auto px-20">
       <div>
@@ -36,10 +67,10 @@ const RevenueTracking = () => {
             </tr>
           </thead>
           <tbody>
-            {monthlyRevenue.map((data, index) => (
+            {monthlySales.map((data, index) => (
               <tr key={index}>
                 <td>{data.month}</td>
-                <td>₹ {data.amount.toLocaleString()}</td>
+                <td>₹ {data.profit.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
@@ -58,17 +89,17 @@ export default RevenueTracking;
 // import React, { useState, useEffect } from 'react';
 // import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
   ArcElement,
-  PointElement,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   LineElement,
-  TimeScale
+  PointElement,
+  TimeScale,
+  Title,
+  Tooltip
 } from 'chart.js';
 
 // Registering necessary components in Chart.js
@@ -102,7 +133,7 @@ const RevenueTrackingCharts = () => {
       // console.log(arrayBuffer)
       const data = new Uint8Array(arrayBuffer);
       // console.log(data)
-      const workbook = XLSX.read(data, { type: 'array' });
+      const workbook = XLSX.read(data, { type: 'array', cellDates: true });
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
 
       const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
@@ -328,7 +359,7 @@ const RevenueTrackingCharts = () => {
     <div className='flex flex-col gap-10'>
       <h2>Revenue Tracking</h2>
       <h3>Total Revenue Over Time</h3>
-      <Line data={totalRevenueOverTimeData} options={options} />;
+      <Line data={totalRevenueOverTimeData} options={options} />
       <h3>Revenue by Customer Segment</h3>
       <Bar data={revenueByCustomerSegmentData} />
       <h3>Revenue by Item</h3>
