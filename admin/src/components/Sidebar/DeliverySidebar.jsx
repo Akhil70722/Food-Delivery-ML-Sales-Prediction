@@ -6,25 +6,18 @@ const DeliverySidebar = () => {
     <div className="sidebar">
       <div className="sidebar-options">
         {/* Example Sidebar Options */}
-        <NavLink 
+        <NavLink
           to="/delivery/orders"
           className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
         >
           <p>Orders</p>
         </NavLink>
 
-        <NavLink 
+        <NavLink
           to="/delivery/tracking"
           className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
         >
           <p>Tracking</p>
-        </NavLink>
-
-        <NavLink 
-          to="/delivery/settings"
-          className={({ isActive }) => `sidebar-option ${isActive ? 'active' : ''}`}
-        >
-          <p>Settings</p>
         </NavLink>
       </div>
     </div>
