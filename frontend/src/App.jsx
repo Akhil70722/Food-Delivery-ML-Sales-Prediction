@@ -17,11 +17,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import SearchResults from './pages/SearchResults/SearchResults';
 import PromoCode from './components/PromoCode/PromoCode';
 import { ThemeProvider } from './Context/ThemeContext';
-import ThemeToggleButton from './components/ThemeToggleButton/ThemeToggleButton';
 import TermsConditions from './pages/TermsConditions/TermsConditions';
 import CookiePolicy from './pages/CookiePolicy/CookiePolicy';
-import TrackOrder from './pages/TrackOrder/TrackOrder';
-import ChatBot from './pages/HelpSupport/ChatBot'; // Import ChatBot component
 import './App.css';
 import HelpAndSupport from './pages/HelpAndSupport';
 
